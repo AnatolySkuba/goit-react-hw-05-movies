@@ -103,7 +103,7 @@ export const App = () => {
       )}
       <Routes>
         <Route
-          path="/Movies"
+          path="Movies"
           element={<SearchPage onClickSearch={onClickSearch} />}
         />
       </Routes>

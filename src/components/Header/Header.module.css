@@ -1,4 +1,4 @@
-.list {
+.nav {
   list-style: none;
   display: flex;
   margin: 0;
@@ -19,7 +19,7 @@
   text-decoration: underline;
 }
 
-.active {
+.activeLink {
   composes: link;
   color: brown;
 }

@@ -5,11 +5,17 @@ export default function Header({ activePage, onClickPage }) {
   // const NAVIGATION = ['Home', 'Movies'];
 
   return (
-    <nav className={s.list}>
-      <NavLink to="/" activeclassname={s.activeLink} className={s.link}>
+    <nav className={s.nav}>
+      <NavLink
+        to="/"
+        className={({ isActive }) => (isActive ? s.activeLink : s.link)}
+      >
         Home
       </NavLink>
-      <NavLink to="/Movies" activeclassname={s.activeLink} className={s.link}>
+      <NavLink
+        to="/Movies"
+        className={({ isActive }) => (isActive ? s.activeLink : s.link)}
+      >
         Movies
       </NavLink>
     </nav>
