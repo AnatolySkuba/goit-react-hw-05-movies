@@ -1,11 +1,20 @@
 import axios from 'axios';
 
-function fetchTrendingMovies() {
-  const response = axios.get(
-    'https://api.themoviedb.org/3/trending/movie/day?api_key=c0e59496318bb750168f85f3ae951021'
+axios.defaults.baseURL = 'https://api.themoviedb.org/3';
+
+export const getTrendingMovies = async () => {
+  const response = await axios.get(
+    '/trending/movie/day?api_key=c0e59496318bb750168f85f3ae951021'
   );
-  return response;
-}
+  return response.data;
+};
+
+// function fetchTrendingMovies() {
+//   const response = axios.get(
+//     'https://api.themoviedb.org/3/trending/movie/day?api_key=c0e59496318bb750168f85f3ae951021'
+//   );
+//   return response;
+// }
 
 function fetchMoviesWithId(id) {
   const response = axios.get(
@@ -36,7 +45,7 @@ function fetchReview(id) {
 }
 
 const api = {
-  fetchTrendingMovies,
+  getTrendingMovies,
   fetchMoviesWithId,
   fetchMoviesWithQuery,
   fetchCast,
