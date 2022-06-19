@@ -1,13 +1,16 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 
 export default function MovieListItem({ title, id }) {
+  // eslint-disable-next-line no-unused-vars
+  const [searchParams, _setSearchParams] = useSearchParams();
+
   return (
     <li>
       <Link
         to={`/movies/${id}`}
         state={{
           location: useLocation().pathname,
-          search: useLocation().search,
+          search: searchParams.get('query'),
         }}
       >
         {title}

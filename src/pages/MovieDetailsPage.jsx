@@ -2,15 +2,16 @@ import { useState, useRef } from 'react';
 import api from 'services/api';
 import AdditionalInformation from 'components/AdditionalInformation/AdditionalInformation';
 import { Link, useParams, useLocation } from 'react-router-dom';
-import s from './MovieDetails.module.css';
+import s from './MovieDetailsPage.module.css';
+import { useEffect } from 'react';
 
-export const MovieDetails = () => {
+export const MovieDetailsPage = () => {
   const [movieDetails, setMovieDetails] = useState(null);
   const { movieId } = useParams();
 
   const locationRef = useRef(useLocation().state);
 
-  if (!movieDetails) {
+  useEffect(() => {
     try {
       const response = api.fetchMoviesWithId(movieId);
       response.then(data => {
@@ -32,7 +33,7 @@ export const MovieDetails = () => {
         });
       });
     } catch (error) {}
-  }
+  }, [movieId]);
 
   if (movieDetails) {
     const { title, overview, poster_path, vote_average, genres, release_date } =
@@ -40,13 +41,15 @@ export const MovieDetails = () => {
 
     return (
       <>
-        <Link
-          className={s.link}
-          to={locationRef.current.location}
-          state={locationRef.current.search}
-        >
-          &#8592; Go back
-        </Link>
+        {locationRef.current && (
+          <Link
+            className={s.link}
+            to={locationRef.current.location}
+            state={locationRef.current.search}
+          >
+            &#8592; Go back
+          </Link>
+        )}
         <div className={s.info}>
           <img
             src={`https://image.tmdb.org/t/p/w500${poster_path}`}

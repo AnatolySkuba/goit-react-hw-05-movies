@@ -1,27 +1,34 @@
+import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Home, Movies, MovieDetails } from '../pages';
+import { Layout } from './Layout';
 import Cast from './AdditionalInformation/Cast/Cast';
 import Review from './AdditionalInformation/Review/Review';
-import { Header, Link } from './App.styled';
+
+const loader = componentName => {
+  return lazy(() =>
+    import(`../pages/${componentName}`).then(module => ({
+      default: module[componentName],
+    }))
+  );
+};
+
+const HomePage = loader('HomePage');
+const MoviesPage = loader('MoviesPage');
+const MovieDetailsPage = loader('MovieDetailsPage');
 
 export const App = () => {
   return (
-    <>
-      <Header>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/movies">Movies</Link>
-        </nav>
-      </Header>
-
+    <Suspense fallback="">
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<Movies />} />
-        <Route path="/movies/:movieId" element={<MovieDetails />}>
-          <Route path="cast" element={<Cast />} />
-          <Route path="reviews" element={<Review />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="/movies" element={<MoviesPage />} />
+          <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Review />} />
+          </Route>
         </Route>
       </Routes>
-    </>
+    </Suspense>
   );
 };
