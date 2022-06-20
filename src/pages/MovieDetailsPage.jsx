@@ -5,7 +5,7 @@ import { Link, useParams, useLocation } from 'react-router-dom';
 import s from './MovieDetailsPage.module.css';
 import { useEffect } from 'react';
 
-export const MovieDetailsPage = () => {
+export default function MovieDetailsPage() {
   const [movieDetails, setMovieDetails] = useState(null);
   const { movieId } = useParams();
 
@@ -70,4 +70,4 @@ export const MovieDetailsPage = () => {
       </>
     );
   }
-};
+}

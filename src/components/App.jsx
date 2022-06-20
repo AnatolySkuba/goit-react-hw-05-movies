@@ -4,17 +4,17 @@ import { Layout } from './Layout';
 import Cast from './AdditionalInformation/Cast/Cast';
 import Review from './AdditionalInformation/Review/Review';
 
-const loader = componentName => {
-  return lazy(() =>
-    import(`../pages/${componentName}`).then(module => ({
-      default: module[componentName],
-    }))
-  );
-};
+const HomePage = lazy(() =>
+  import('../pages/HomePage' /* webpackChunkName: "HomePage" */)
+);
 
-const HomePage = loader('HomePage');
-const MoviesPage = loader('MoviesPage');
-const MovieDetailsPage = loader('MovieDetailsPage');
+const MoviesPage = lazy(() =>
+  import('../pages/MoviesPage' /* webpackChunkName: "MoviesPage" */)
+);
+
+const MovieDetailsPage = lazy(() =>
+  import('../pages/MovieDetailsPage' /* webpackChunkName: "MovieDetailsPage" */)
+);
 
 export const App = () => {
   return (

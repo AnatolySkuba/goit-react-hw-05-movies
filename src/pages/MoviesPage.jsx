@@ -4,7 +4,7 @@ import MoviesList from 'components/MoviesList/MoviesList';
 import api from 'services/api';
 import s from './MoviesPage.module.css';
 
-export const MoviesPage = () => {
+export default function MoviesPage() {
   const [query, setQuery] = useState('');
   const [moviesSearch, setMoviesSearch] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -52,4 +52,4 @@ export const MoviesPage = () => {
       {moviesSearch.length !== 0 && <MoviesList movies={moviesSearch} />}
     </main>
   );
-};
+}
