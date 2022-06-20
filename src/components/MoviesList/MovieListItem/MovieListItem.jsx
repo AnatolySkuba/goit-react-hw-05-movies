@@ -1,4 +1,5 @@
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export default function MovieListItem({ title, id }) {
   // eslint-disable-next-line no-unused-vars
@@ -18,3 +19,8 @@ export default function MovieListItem({ title, id }) {
     </li>
   );
 }
+
+MovieListItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+};

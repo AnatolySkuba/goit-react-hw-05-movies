@@ -1,4 +1,5 @@
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 
@@ -46,3 +47,19 @@ const api = {
 };
 
 export default api;
+
+fetchMoviesWithId.propTypes = {
+  id: PropTypes.number.isRequired,
+};
+
+fetchMoviesWithQuery.propTypes = {
+  query: PropTypes.string.isRequired,
+};
+
+fetchCast.propTypes = {
+  id: PropTypes.number.isRequired,
+};
+
+fetchReview.propTypes = {
+  id: PropTypes.number.isRequired,
+};
