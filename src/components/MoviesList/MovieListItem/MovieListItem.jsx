@@ -8,7 +8,7 @@ export default function MovieListItem({ title, id }) {
   return (
     <li>
       <Link
-        to={`/movies/${id}`}
+        to={`/goit-react-hw-05-movies/movies/${id}`}
         state={{
           location: useLocation().pathname,
           search: searchParams.get('query'),

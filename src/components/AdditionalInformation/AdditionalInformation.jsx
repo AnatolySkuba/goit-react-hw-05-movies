@@ -11,7 +11,9 @@ export default function AdditionalInformation() {
         {NAVIGATION.map((page, index) => {
           return (
             <li key={index}>
-              <Link to={`/movies/${movieId}/${page.toLowerCase()}`}>
+              <Link
+                to={`/goit-react-hw-05-movies/movies/${movieId}/${page.toLowerCase()}`}
+              >
                 {page}
               </Link>
             </li>
